@@ -23,7 +23,7 @@ setup(
         'Programming Language :: Python :: 3',
     ],
 
-    packages=['nn'],
+    packages=['nn', 'nn.layers'],
 
     keywords='neural networks nn',
 )
