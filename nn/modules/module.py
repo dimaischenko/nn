@@ -5,7 +5,10 @@ class Module(object):
     """
 
     def __init__(self):
-        pass
+        self.output = None
+        self.grad_input = None
+
+        self.training = True
 
     def forward(self, *input):
         raise NotImplementedError

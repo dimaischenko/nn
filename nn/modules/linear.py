@@ -17,8 +17,10 @@ class Linear(Module):
         self.W = 0.01 * np.random.rand(self.input_size, self.output_size)
         self.b = np.zeros((1, self.output_size))
 
-    def forward(self, X):
-        return np.dot(X, self.W) + self.b
+    def forward(self, input_):
+        self.output = np.dot(input_, self.W) + self.b
+        return self.output
 
-    def backward(self, *input):
-        pass
+    def backward(self, grad_output):
+        self.grad_input = np.dot(grad_output, (self.W).T)
+        return self.grad_input
