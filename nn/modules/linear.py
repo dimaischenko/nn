@@ -1,8 +1,8 @@
-from nn.layers import Layer
+from nn.modules import Module
 import numpy as np
 
 
-class Linear(Layer):
+class Linear(Module):
     """Simple fully connected layer"""
 
     def __init__(self, input_size, output_size):

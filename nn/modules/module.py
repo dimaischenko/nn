@@ -1,7 +1,7 @@
-class Layer(object):
-    """Abstract base class for layer.
+class Module(object):
+    """Abstract base class for all nn modules.
 
-    All other layers should be inherited from this class.
+    All other layers (modules) should be inherited from this class.
     """
 
     def __init__(self):
