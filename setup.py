@@ -24,6 +24,7 @@ setup(
     ],
 
     packages=['nn', 'nn.modules'],
+    install_requires=['numpy'],
 
     keywords='neural networks nn',
 )
