@@ -23,7 +23,7 @@ setup(
         'Programming Language :: Python :: 3',
     ],
 
-    packages=['nn', 'nn.modules'],
+    packages=['nn', 'nn.modules', 'nn.utils', 'nn.optim'],
     install_requires=['numpy'],
 
     keywords='neural networks nn',
