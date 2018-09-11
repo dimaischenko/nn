@@ -7,11 +7,11 @@ class ReLU(Module):
 
     def __init__(self):
         super(ReLU, self).__init__()
-        self.retained_output = None
 
     def forward(self, input_):
-        self.retained_output = np.maximum(0, input_)
-        return self.retained_output
+        self.output = np.maximum(0, input_)
+        return self.output
 
     def backward(self, grad_output):
-        return grad_output * (self.retained_output > 0)
+        self.grad_input = grad_output * (self.output > 0)
+        return self.grad_input
