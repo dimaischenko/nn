@@ -1,14 +1,17 @@
 from nn.modules import Module
+import numpy as np
 
 
 class ReLU(Module):
     """Classic ReLU non-linear layer"""
 
     def __init__(self):
-        pass
+        super(ReLU, self).__init__()
+        self.retained_output = None
 
     def forward(self, input_):
-        pass
+        self.retained_output = np.maximum(0, input_)
+        return self.retained_output
 
     def backward(self, grad_output):
-        pass
+        return grad_output * (self.retained_output > 0)
