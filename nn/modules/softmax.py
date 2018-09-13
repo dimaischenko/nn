@@ -1,11 +1,11 @@
 from nn.modules import Module
 
 
-class LogSoftmax(Module):
+class LogSoftMax(Module):
     """Logarithmic softmax layer"""
 
     def __init__(self):
-        pass
+        super(LogSoftMax, self).__init__()
 
     def forward(self, input_):
         pass
