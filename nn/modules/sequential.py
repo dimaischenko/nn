@@ -9,8 +9,17 @@ class Sequential(Module):
 
         self.modules = modules
 
+        self.params = []
+        self.grad_params = []
+
+        for module in self.modules:
+            self.params += module.get_params()
+            self.grad_params += module.get_grad_params()
+
     def add(self, module):
         self.modules.append(module)
+        self.params += module.get_params()
+        self.grad_params += module.get_grad_params()
 
     def zero_grad(self):
         for module in self.modules:
