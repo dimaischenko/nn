@@ -9,4 +9,5 @@ class SGD(Optimizer):
         self.lr = lr
 
     def step(self):
-        pass
+        for param, grad in zip(self.params, self.grad_params):
+            param += self.lr * grad
