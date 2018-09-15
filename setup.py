@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -23,7 +23,7 @@ setup(
         'Programming Language :: Python :: 3',
     ],
 
-    packages=['nn', 'nn.modules', 'nn.utils', 'nn.optim'],
+    packages=find_packages(),
     install_requires=['numpy'],
 
     keywords='neural networks nn',
