@@ -15,11 +15,12 @@ class Linear(Module):
         self._init_params()
 
     def _init_params(self):
-        self.W = 0.01 * np.random.rand(self.input_size, self.output_size)
-        self.b = np.zeros((1, self.output_size))
+        sigma = np.sqrt(2. / self.input_size)
+        self.W = sigma * np.random.randn(self.input_size, self.output_size)
+        self.b = sigma * np.random.randn(1, self.output_size)
 
-        self.dW = np.zeros(self.W.shape)
-        self.db = np.zeros(self.b.shape)
+        self.dW = np.zeros_like(self.W)
+        self.db = np.zeros_like(self.b)
 
     def get_params(self):
         return [self.W, self.b]

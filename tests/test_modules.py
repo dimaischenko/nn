@@ -9,6 +9,8 @@ class TestModules(unittest.TestCase):
 
     def test_linear(self):
         layer = Linear(10, 5)
+        layer.b.fill(0)
+
         x = np.zeros((2, 10))
 
         output = layer(x)
@@ -19,6 +21,9 @@ class TestModules(unittest.TestCase):
 
         seq.add(Linear(10, 5))
         seq.add(Linear(5, 2))
+
+        seq.modules[0].b.fill(0)
+        seq.modules[1].b.fill(0)
 
         x = np.zeros((2, 10))
         output = seq(x)
