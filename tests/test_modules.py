@@ -11,7 +11,7 @@ class TestModules(unittest.TestCase):
         layer = Linear(10, 5)
         x = np.zeros((2, 10))
 
-        output = layer.forward(x)
+        output = layer(x)
         np.testing.assert_array_almost_equal(output, np.zeros((2, 5)))
 
     def test_sequential(self):
@@ -21,7 +21,7 @@ class TestModules(unittest.TestCase):
         seq.add(Linear(5, 2))
 
         x = np.zeros((2, 10))
-        output = seq.forward(x)
+        output = seq(x)
         np.testing.assert_array_almost_equal(output, np.zeros((2, 2)))
 
         grad_input = seq.backward(np.zeros((2, 2)))

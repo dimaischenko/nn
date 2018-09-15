@@ -4,6 +4,7 @@ from nn.modules import Linear
 from nn.modules import ReLU
 from nn.modules import Sequential
 from nn.optim import SGD
+from nn.loss import MSE
 
 
 network = Sequential([
@@ -25,6 +26,8 @@ X = np.array([
     [-1.2, 3, 0.2, 0]
 ])
 
+Y = np.array([1, 0])
+
 optim = SGD(
     network.get_params(),
     network.get_grad_params(),
@@ -32,6 +35,11 @@ optim = SGD(
 )
 
 optim.step()
+
+criterion = MSE()
+loss = criterion(network.forward(X), Y)
+print("Loss", loss)
+
 
 print("Outputs")
 print(network.forward(X))
