@@ -13,4 +13,4 @@ class MSE(Loss):
         return np.average((input_.T[0] - target) ** 2)
 
     def backward(self, input_, target):
-        return (2 / input_.shape[0] * (input_.T[0] - target)).T
+        return np.array([2 / input_.shape[0] * (input_.T[0] - target)]).T

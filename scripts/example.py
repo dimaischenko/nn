@@ -39,6 +39,7 @@ optim.step()
 criterion = MSE()
 loss = criterion(network.forward(X), Y)
 print("Loss", loss)
+print("Loss-backward", criterion.backward(network.forward(X), Y))
 
 
 print("Outputs")
