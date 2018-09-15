@@ -6,24 +6,22 @@ class Sequential(Module):
 
     def __init__(self, modules=[]):
         super(Sequential, self).__init__()
-
         self.modules = modules
-
-        self.params = []
-        self.grad_params = []
-
-        for module in self.modules:
-            self.params += module.get_params()
-            self.grad_params += module.get_grad_params()
 
     def add(self, module):
         self.modules.append(module)
-        self.params += module.get_params()
-        self.grad_params += module.get_grad_params()
 
     def zero_grad(self):
         for module in self.modules:
             module.zero_grad()
+
+    def get_params(self):
+        return [param for module in self.modules
+                for param in module.get_params()]
+
+    def get_grad_params(self):
+        return [grad_param for module in self.modules
+                for grad_param in module.get_grad_params()]
 
     def forward(self, input_):
         output = input_

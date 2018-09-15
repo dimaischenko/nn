@@ -7,8 +7,6 @@ class Module(object):
     def __init__(self):
         self.output = None
         self.grad_input = None
-        self.params = []
-        self.grad_params = []
 
     def forward(self, *input):
         raise NotImplementedError
@@ -17,12 +15,12 @@ class Module(object):
         raise NotImplementedError
 
     def get_params(self):
-        """Return list with layer params"""
-        return self.params
+        """Return list with params for all layers"""
+        return []
 
     def get_grad_params(self):
-        """Return list with all layer tuned parameters or emtpy list"""
-        return self.grad_params
+        """Return list with grad params for all layers"""
+        return []
 
     def zero_grad(self):
         """Set gradient by all layer paramters to zero"""

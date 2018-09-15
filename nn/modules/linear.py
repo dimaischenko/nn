@@ -14,21 +14,26 @@ class Linear(Module):
         self._init_params()
 
     def _init_params(self):
-        self.params = [
-            0.01 * np.random.rand(self.input_size, self.output_size),  # W
-            np.zeros((1, self.output_size))  # b
-        ]
+        self.W = 0.01 * np.random.rand(self.input_size, self.output_size)
+        self.b = np.zeros((1, self.output_size))
 
-        self.grad_params = [0, 0]
+        self.dW = np.zeros(self.W.shape)
+        self.db = np.zeros(self.b.shape)
+
+    def get_params(self):
+        return [self.W, self.b]
+
+    def get_grad_params(self):
+        return [self.dW, self.db]
 
     def forward(self, input_):
-        self.output = np.dot(input_, self.params[0]) + self.params[1]
+        self.output = np.dot(input_, self.W) + self.b
         return self.output
 
     def backward(self, grad_output):
-        self.grad_input = np.dot(grad_output, (self.params[0]).T)
+        self.grad_input = np.dot(grad_output, (self.W).T)
         return self.grad_input
 
     def zero_grad(self):
-        self.grad_params[0] = 0
-        self.grad_params[1] = 0
+        self.dW.fill(0)
+        self.db.fill(0)
