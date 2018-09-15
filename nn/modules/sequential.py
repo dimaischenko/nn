@@ -24,12 +24,11 @@ class Sequential(Module):
                 for grad_param in module.get_grad_params()]
 
     def forward(self, input_):
-        output = input_
+        self.output = input_
 
         for module in self.modules:
-            output = module.forward(output)
+            self.output = module.forward(self.output)
 
-        self.output = output
         return self.output
 
     def backward(self, grad_output):
