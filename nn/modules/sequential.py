@@ -12,6 +12,10 @@ class Sequential(Module):
     def add(self, module):
         self.modules.append(module)
 
+    def zero_grad(self):
+        for module in self.modules:
+            module.zero_grad()
+
     def forward(self, input_):
         output = input_
 
